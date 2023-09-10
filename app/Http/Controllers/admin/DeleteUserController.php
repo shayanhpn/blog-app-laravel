@@ -16,6 +16,7 @@ class DeleteUserController extends Controller
     // Delete User Function
     public function deleteuserFunc(User $id){
         $id->delete();
-        return redirect()->route('admin.users');
+        return redirect()->route('admin.users')->with('success','کاربر مورد نظر با موفقیت حذف شد');
     }
+
 }
