@@ -15,7 +15,7 @@ class CommentController extends Controller
             'name' => ['required'],
             'email' => ['required','email'],
             'content' => ['required'],
-            'captcha' => ['required','captcha']
+            'captcha' => ['required','captcha','max:500']
  
         ],[
             'name.required' => 'وارد کردن نام الزامی می باشد',
@@ -23,7 +23,8 @@ class CommentController extends Controller
             'email.email' => 'لطفا ایمیل صحیح وارد کنید',
             'content.required' => 'وارد کردن محتوا الزامی می باشد',
             'captcha.required' => 'وارد کردن کد امنیتی الزامی می باشد',
-            'captcha.captcha' => 'لطفا کد امنیتی صحیح را وارد کنید'
+            'captcha.captcha' => 'لطفا کد امنیتی صحیح را وارد کنید',
+            'captcha.max' => 'شما از حداکثر مجاز برای دریافت ورودی استفاده کردید'
         ]);
 
         $comment = new Comment;

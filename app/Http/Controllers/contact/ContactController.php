@@ -14,7 +14,7 @@ class ContactController extends Controller
             'inputName' => ['required'],
             'inputEmail' => ['required','email'],
             'inputSubject' => ['required'],
-            'inputMessage' => ['required'],
+            'inputMessage' => ['required','max:2000'],
             'captcha' => ['required','captcha']
         ],[
             'inputName.required' => 'لطفا نام خود را وارد کنید',
@@ -22,6 +22,7 @@ class ContactController extends Controller
             'inputEmail.email' => 'لطفا ایمیل را صحیح وارد کنید',
             'inputSubject.required' => 'لطفا عنوان را وارد کنید',
             'inputMessage.required' => 'لطفا متن مورد نظر را وارد کنید',
+            'inputMessage.max' => 'شما از حداکثر مجاز برای دریافت ورودی استفاده کردید',
             'captcha.required' => 'لطفا کد امینتی را وارد کنید',
             'captcha.captcha' => 'لطفا کد امنیتی را صحیح وارد کنید'
         ]);

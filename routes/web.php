@@ -95,7 +95,7 @@ Route::prefix('/admin')->middleware('auth')->name('admin.')->group(function(){
 Route::get('/register',[RegisterController::class,'showRegisterPage'])->name('register');
 Route::post('/register',[RegisterController::class,'registerFunction']);
 Route::get('/login',[LoginController::class,'showLoginPage'])->name('login');
-Route::post('/login',[LoginController::class,'loginFuction']);
+Route::post('/login',[LoginController::class,'loginFuction'])->name('login-func');
 Route::post('/logout',[LogoutController::class,'logoutFunction'])->name('logout');
 
 //Single Post View

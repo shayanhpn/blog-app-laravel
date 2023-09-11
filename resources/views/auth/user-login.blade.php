@@ -7,9 +7,8 @@
         </div>
         <div class="d-flex flex-row justify-content-center mt-2">
             <div class="col-md-4 bg-white  p-4 rounded shadow-sm">
-                <form action="" method="POST">
-                    @csrf
-                    @method('POST')
+                <form action="{{route('login-func')}}" method="POST">
+                    @csrf                    
                     <input type="email" value="{{old('loginemail')}}" class="form-control @error('loginemail') is-invalid @enderror" placeholder="ایمیل" name="loginemail">
                     @error('loginemail') <p class="text-danger m-1">{{$message}}</p> @enderror
                     <input type="password" class="form-control my-2 @error('loginpassword') is-invalid @enderror" placeholder="رمز عبور" name="loginpassword">
