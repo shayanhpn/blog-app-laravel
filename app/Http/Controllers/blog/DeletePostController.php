@@ -11,8 +11,11 @@ class DeletePostController extends Controller
 
     // Delete Post Method in Admin Panel
     public function deletePost(Post $id){
-        $id->delete();
-        return redirect()->route('admin.view-posts')->with('success','نوشته مورد نظر با موفقیت حذف گردید');
+        if(auth()->user()->id == $id->user_id){
+            $id->delete();
+            return redirect()->route('admin.view-posts')->with('success','نوشته مورد نظر با موفقیت حذف گردید');
+        }
+        return back()->with('danger','شما دسترسی به این عملیات را ندارید');
     }
 
     // Show Delete Post Page// ASK the user for delete or no

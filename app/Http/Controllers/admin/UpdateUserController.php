@@ -34,19 +34,22 @@ class UpdateUserController extends Controller
 
 
 
-        $user->firstname = strip_tags($updateFields['firstname']);
-        $user->lastname = strip_tags($updateFields['lastname']);
-        $user->email = strip_tags($updateFields['email']);
-        $user->author_desc = strip_tags($updateFields['author_desc']);
-        if($request->hasFile('avatar'))
-        {
-            $fileName = 'avatars/'. time() . '.' . $request->file('avatar')->getClientOriginalName();
-            $request->avatar->move(public_path('avatars'),$fileName);
-            $user->avatar = $fileName;
+        if(auth()->user()->id  == $user->id){
+            $user->firstname = strip_tags($updateFields['firstname']);
+            $user->lastname = strip_tags($updateFields['lastname']);
+            $user->email = strip_tags($updateFields['email']);
+            $user->author_desc = strip_tags($updateFields['author_desc']);
+            if($request->hasFile('avatar'))
+            {
+                $fileName = 'avatars/'. time() . '.' . $request->file('avatar')->getClientOriginalName();
+                $request->avatar->move(public_path('avatars'),$fileName);
+                $user->avatar = $fileName;
+            }
+            $user->updated_at = Verta::now();
+            $user->save();
+    
+            return redirect()->route('admin.users')->with('success','حساب کاربری شما با موفقیت بروزرسانی شد');
         }
-        $user->updated_at = Verta::now();
-        $user->save();
-
-        return redirect()->route('admin.users')->with('success','حساب کاربری شما با موفقیت بروزرسانی شد');
+        return back()->with('danger','شما دسترسی به این عملیات را ندارید');
     }
 }
