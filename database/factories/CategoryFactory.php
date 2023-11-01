@@ -30,8 +30,11 @@ class CategoryFactory extends Factory
         return array($title,$desc);
 
     }
+
+    // Category Factory
     public function definition(): array
     {
+        
         $cat = $this->categoryLists();
         return [
             'title' => $cat[0],

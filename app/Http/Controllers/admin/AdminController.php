@@ -10,7 +10,7 @@ use App\Http\Controllers\Controller;
 
 class AdminController extends Controller
 {
-    //Admin Dashboard Elements
+    // Admin Dashboard Elements
     public function showDashboardPage(){
         $posts = Post::orderBy('created_at','desc')->paginate(5);
         $allPosts = Post::all();
@@ -19,7 +19,7 @@ class AdminController extends Controller
         return view('admin.admin-dashboard',compact('posts','allPosts','allUsers','contacts'));
     }
 
-    //View Register Page in Admin Panel
+    // View Register Page in Admin Panel
     public function showRegisterUserPage(){
         return view('admin.user-register-admin');
     }
